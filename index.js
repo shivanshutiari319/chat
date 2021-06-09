@@ -22,14 +22,16 @@ let count = 0;
 io.on('connection',(socket)=>{
     console.log('connection is up and r')
     socket.emit('messages','new user connected')
-    socket.broadcast.emit('messages','a new user is joined')
+    socket.broadcast.emit('messages','a new has user is joined')
    
 
 socket.on('sendmessages',(message,cb)=>{
     io.emit('messages',message)
+    
     cb();
     
 })
+
 socket.on('geolocation',(cord,cb)=>{
 io.emit('messages',`https://www.google.com/maps/?q=${cord.lang},${cord.lat}`);
 
